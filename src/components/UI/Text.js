@@ -3,7 +3,7 @@ import React from "react";
 const Text = props => {
   return (
     <div className={props.className} style={{ color: props.color }}>
-      {props.text}
+      <b>{props.text}</b>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 const initialState = { file: "" };
 export const cms = (state = initialState, action) => {
   switch (action.type) {
-    case "HANDLE_TEXT_FIELD":
+    case "HANDLE_CHANGE_FILELDS":
       return { ...state, [action.payload.id]: action.payload.value };
     case "HANDLE_FILE":
       return { ...state, [action.payload.id]: action.payload.value };

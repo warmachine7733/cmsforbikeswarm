@@ -2,7 +2,7 @@ import React from "react";
 import Text from "./Text";
 
 const Input = props => {
-  const { action, type, id, value, file } = props;
+  const { action, type, id, value, file, values, name } = props;
   let inputItems = null;
   switch (type) {
     case "text":
@@ -43,8 +43,23 @@ const Input = props => {
     //     />
     //   );
     //   break;
+    case "radio":
+      inputItems = values.map((each, i) => {
+        return (
+          <span key={i}>
+            <input
+              type={type}
+              name={name}
+              value={each}
+              onClick={e => props.action({ value: e.target.value, id: name })}
+            />
+            {each}
+            &nbsp;&nbsp;&nbsp;
+          </span>
+        );
+      });
+      break;
     default:
-    case "text":
       inputItems = (
         <input
           type={type}

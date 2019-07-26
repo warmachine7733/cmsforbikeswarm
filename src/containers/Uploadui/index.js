@@ -4,6 +4,8 @@ import React from "react";
 import Text from "../../components/UI/Text";
 import Button from "../../components/UI/Button";
 import Input from "../../components/UI/Input";
+import DatePicker from "../../components/UI/DatePicker";
+import DropDown from "../../components/UI/DropDown";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import {
@@ -26,7 +28,8 @@ class CMS extends React.Component {
         <input
           type="file"
           id="pic"
-          onChange={e => this.props.handleFileChange(e.target.files[0])}
+          onChange={e => this.props.handleFileChange(e.target.files)}
+          multiple
         />
         <Input
           type="number"
@@ -35,6 +38,11 @@ class CMS extends React.Component {
           action={this.props.handleChange}
         />
         {/** calendar selcet will be here */}
+        <DatePicker
+          label="releaseDate"
+          id="releaseDate"
+          action={this.props.handleChange}
+        />
         <Input
           type="number"
           id="power"
@@ -47,21 +55,6 @@ class CMS extends React.Component {
           label="torque"
           action={this.props.handleChange}
         />
-
-        {/** brakes will be a  drop down here*/}
-        {/** tyre types  will be a  drop down here*/}
-        {/**abs will a boolean radio */}
-        <Input
-          type="number"
-          id="millage"
-          label="millage"
-          action={this.props.handleChange}
-        />
-
-        {/**passSwitch will be radio */}
-        {/*** console will be a drop down */}
-        {/**antiTheft will be a radio */}
-        {/**stepUpSeat will be radio */}
         <Input
           type="number"
           id="maxSpeed"
@@ -72,6 +65,12 @@ class CMS extends React.Component {
           type="number"
           id="zeroToSixty"
           label="zeroToSixty"
+          action={this.props.handleChange}
+        />
+        <Input
+          type="number"
+          id="millage"
+          label="millage"
           action={this.props.handleChange}
         />
         <Input
@@ -86,9 +85,78 @@ class CMS extends React.Component {
           label="rearSuspension"
           action={this.props.handleChange}
         />
-        {/** lowFuelIndicator will be a radio */}
-        {/** maintenanceIndicator will be a radio */}
-        {/** lowBatteryIndicator will be a radio */}
+        <Input
+          type="radio"
+          name="brakes"
+          label="brakes"
+          values={["dual drum", "dual disc", "rear disc ", "front disc"]}
+          action={this.props.handleChange}
+        />
+        {/** tyre types  will be a  drop down here*/}
+        <Input
+          type="radio"
+          values={["tubeless", "tube", "rear tubeless", "front tubeless"]}
+          name="tyreType"
+          label="typeType"
+          action={this.props.handleChange}
+        />
+        {/**abs will a boolean radio */}
+        <Input
+          type="radio"
+          values={["true", "false"]}
+          name="abs"
+          label="abs"
+          action={this.props.handleChange}
+        />
+        <Input
+          type="radio"
+          values={["true", "false"]}
+          name="passSwitch"
+          label="passSwitch"
+          action={this.props.handleChange}
+        />
+        <Input
+          type="radio"
+          values={["digital", "manual", "hybrid"]}
+          name="console"
+          label="console"
+          action={this.props.handleChange}
+        />
+        <Input
+          type="radio"
+          values={["true", "false"]}
+          name="antiTheft"
+          label="antiTheft"
+          action={this.props.handleChange}
+        />
+        <Input
+          type="radio"
+          values={["true", "false"]}
+          name="stepUpSeat"
+          label="stepUpSeat"
+          action={this.props.handleChange}
+        />
+        <Input
+          type="radio"
+          values={["true", "false"]}
+          name="lowFuelIndicator"
+          label="lowFuelIndicator"
+          action={this.props.handleChange}
+        />
+        <Input
+          type="radio"
+          values={["true", "false"]}
+          name="maintenanceIndicator"
+          label="maintenanceIndicator"
+          action={this.props.handleChange}
+        />
+        <Input
+          type="radio"
+          values={["true", "false"]}
+          name="lowBatteryIndicator"
+          label="lowBatteryIndicator"
+          action={this.props.handleChange}
+        />
         <Input
           type="button"
           value="add"

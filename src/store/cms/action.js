@@ -24,7 +24,7 @@ export const addBike = file => {
       for (let i = 0; i < file.length; i++) {
         data.append("file", file[i]);
       }
-
+      // console.log("data to be sent", data);
       const result = await axios.post(
         "http://localhost:9000/bike/addbike",
         data
@@ -35,3 +35,4 @@ export const addBike = file => {
     }
   };
 };
+

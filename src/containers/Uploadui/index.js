@@ -14,6 +14,7 @@ import {
   handleFileChange
 } from "../../store/cms/action";
 
+import { getCompanies } from "../../store/companies/action";
 class CMS extends React.Component {
   render() {
     const { file } = this.props;
@@ -23,6 +24,18 @@ class CMS extends React.Component {
           type="text"
           id="name"
           label="name"
+          action={this.props.handleChange}
+        />
+        {/* <Input
+          type="text"
+          id="company"
+          label="company"
+          action={this.props.handleChange}
+        /> */}
+        <DropDown
+          label="company"
+          values={this.props.companies}
+          id="company"
           action={this.props.handleChange}
         />
         <input
@@ -167,18 +180,22 @@ class CMS extends React.Component {
     );
   }
 
-  componentWillMount() {}
+  componentWillMount() {
+    this.props.getCompanies();
+  }
 }
 const mapStateToProps = state => {
   return {
-    file: state.cms.file
+    file: state.cms.file,
+    companies: state.companies.companies
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     handleChange: paylaod => dispatch(handleChange(paylaod)),
     addBike: file => dispatch(addBike(file)),
-    handleFileChange: file => dispatch(handleFileChange(file))
+    handleFileChange: file => dispatch(handleFileChange(file)),
+    getCompanies: () => dispatch(getCompanies())
   };
 };
 
